@@ -57,9 +57,7 @@ const getFilename = (res, data) => {
 	return filename;
 };
 
-module.exports.getFilename = getFilename;
-
-module.exports = (uri, output, opts) => {
+const download = (uri, output, opts) => {
 	if (typeof output === "object") {
 		opts = output;
 		output = null;
@@ -112,4 +110,11 @@ module.exports = (uri, output, opts) => {
 	stream.catch = promise.catch.bind(promise);
 
 	return stream;
+};
+
+module.exports = {
+	download,
+	getFilename,
+	getExtFromMime,
+	filenameFromPath
 };
