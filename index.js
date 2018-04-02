@@ -103,7 +103,7 @@ const download = (uri, output, opts) => {
 
 			return makeDir(path.dirname(outputFilepath))
 				.then(() => fsP.writeFile(outputFilepath, data))
-				.then(() => data);
+				.then(() => ({ data, filepath: outputFilepath }));
 		});
 
 	stream.then = promise.then.bind(promise);
